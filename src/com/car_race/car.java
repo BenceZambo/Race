@@ -9,7 +9,7 @@ public class car extends vehicles {
 
     Random random = new Random();
 
-    public void setname(){
+    public void setName(){
         name = names[random.nextInt(10)] + names[random.nextInt(10)];
     }
 
