@@ -28,6 +28,7 @@ public class truck extends vehicles {
         }
     }
     public void moveForAnHour(){
+        setSpeed();
         turnedDown();
         if (truckTurnedDown==false) {
             distanceTraveled += speed;
