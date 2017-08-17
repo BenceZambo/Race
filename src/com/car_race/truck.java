@@ -1,13 +1,18 @@
 package com.car_race;
 
-import java.util.Random;
 
 public class truck extends vehicles {
-    Random random = new Random();
     Boolean truckTurnedDown = false;
-    int truckTurnedDownCounter = 0;
+    int breakdownTurnsLeft = 0;
+
+    private void setType(){
+
+        type = "truck";
+    }
 
     public void setName(){
+
+        setType();
         Integer randomName = new Integer(random.nextInt(1000));
         name = randomName.toString();
     }
@@ -16,12 +21,14 @@ public class truck extends vehicles {
         speed = 100;
     }
 
-    public void turnedDown(int accident) {
-        if (truckTurnedDown && truckTurnedDownCounter==2){
+    private void turnedDown(int accident) {
+        System.out.println(name + "   " + accident);
+        if (truckTurnedDown && breakdownTurnsLeft==1){
             truckTurnedDown = false;
+            breakdownTurnsLeft = 0;
         }
         if (truckTurnedDown) {
-            truckTurnedDownCounter++;
+            breakdownTurnsLeft++;
         }
         if (accident <= 5 && truckTurnedDown == false) {
             truckTurnedDown = true;
@@ -29,7 +36,7 @@ public class truck extends vehicles {
     }
     public void moveForAnHour(){
         setSpeed();
-        turnedDown();
+        turnedDown(random.nextInt(100));
         if (truckTurnedDown==false) {
             distanceTraveled += speed;
         }

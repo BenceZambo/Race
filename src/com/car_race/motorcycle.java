@@ -1,21 +1,27 @@
 package com.car_race;
 
-import java.util.Random;
 
 public class motorcycle extends vehicles {
     static int numberOfBikers = 0;
-    Random random = new Random();
+
+    private void setType(){
+
+        type = "motorcycle";
+    }
 
     public void setName(){
+
+        setType();
         numberOfBikers++;
         name = "Motorcycle" + numberOfBikers;
     }
 
-    public void setSpeed(){
+    private void setSpeed(){
         speed = 100;
     }
 
     public void moveForAnHour(Boolean isRaining){
+        setSpeed();
         if (isRaining){
             int x = random.nextInt(10);
             x *= 5;
